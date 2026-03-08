@@ -237,14 +237,14 @@ export default function App() {
           </motion.div>
 
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-            {[
-              { label: 'Veículo - Visão Externa', seed: 'car-ext' },
-              { label: 'Veículo - Visão Interna', seed: 'car-int' },
-              { label: 'Projeto Premium - Externa', seed: 'premium-ext' },
-              { label: 'Projeto Premium - Interna', seed: 'premium-int' },
-              { label: 'Projeto Residencial - Externa', seed: 'res-ext' },
-              { label: 'Projeto Residencial - Interna', seed: 'res-int' },
-            ].map((item, i) => (
+{[
+  { label: 'Veículo - Visão Externa', imagem: '/Visão Externa.webster' },
+  { label: 'Veículo - Visão Interna', imagem: '/Visão Interna.webster' },
+  { label: 'Projeto Premium - Externa', imagem: '/Externa.webster' },
+  { label: 'Projeto Premium - Interna', imagem: '/Interna.webster' },
+  { label: 'Projeto Residencial - Externa', imagem: '/Externa Residencial.webster' },
+  { label: 'Projeto Residencial - Interna', imagem: '/Interna Residencial.webster' },
+].map((item, i) => (
               <motion.div 
                 key={i}
                 {...fadeInUp}
@@ -252,12 +252,12 @@ export default function App() {
                 className="flex flex-col gap-4"
               >
                 <div className="aspect-[4/3] bg-zinc-800 rounded-3xl overflow-hidden relative group cursor-pointer border border-zinc-800">
-                  <img 
-                    src={`https://picsum.photos/seed/bianchi-${item.seed}/800/600`} 
-                    alt={item.label}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
+<img
+  src={item.imagem}
+  alt={item.label}
+  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+  referrerPolicy="no-referrer"
+/>
                   <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
                 <p className="text-zinc-400 font-medium text-sm md:text-base text-center uppercase tracking-wider">
