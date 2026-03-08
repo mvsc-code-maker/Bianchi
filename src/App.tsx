@@ -146,17 +146,6 @@ export default function App() {
           transition={{ duration: 0.8 }}
           className="max-w-4xl text-center space-y-8 relative z-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/80 border border-zinc-800 backdrop-blur-md mb-4 shadow-xl">
-            <div className="flex gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
-              ))}
-            </div>
-            <span className="text-sm font-medium text-zinc-300">
-              5,0 no Google <span className="text-zinc-500 ml-1">(+184 avaliações)</span>
-            </span>
-          </div>
-
           <h1 className="text-5xl md:text-8xl font-bold tracking-tight leading-[1.1] text-white drop-shadow-2xl">
             Estética, Privacidade e <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">
@@ -247,60 +236,37 @@ export default function App() {
             <p className="text-zinc-400 text-xl max-w-2xl mx-auto">Confira o padrão de acabamento Bianchi em projetos reais.</p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+            {[
+              { label: 'Veículo - Visão Externa', seed: 'car-ext' },
+              { label: 'Veículo - Visão Interna', seed: 'car-int' },
+              { label: 'Projeto Premium - Externa', seed: 'premium-ext' },
+              { label: 'Projeto Premium - Interna', seed: 'premium-int' },
+              { label: 'Projeto Residencial - Externa', seed: 'res-ext' },
+              { label: 'Projeto Residencial - Interna', seed: 'res-int' },
+            ].map((item, i) => (
               <motion.div 
                 key={i}
                 {...fadeInUp}
                 transition={{ delay: i * 0.05 }}
-                className="aspect-[4/3] bg-zinc-800 rounded-3xl overflow-hidden relative group cursor-pointer border border-zinc-800"
+                className="flex flex-col gap-4"
               >
-                <img 
-                  src={`https://picsum.photos/seed/bianchi-work-${i}/800/600`} 
-                  alt={`Trabalho Bianchi ${i}`}
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-8">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <p className="text-red-400 font-bold text-sm uppercase tracking-widest mb-1">Projeto #{i}</p>
-                    <p className="text-white font-bold text-xl">Acabamento Premium</p>
-                  </div>
+                <div className="aspect-[4/3] bg-zinc-800 rounded-3xl overflow-hidden relative group cursor-pointer border border-zinc-800">
+                  <img 
+                    src={`https://picsum.photos/seed/bianchi-${item.seed}/800/600`} 
+                    alt={item.label}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
+                <p className="text-zinc-400 font-medium text-sm md:text-base text-center uppercase tracking-wider">
+                  {item.label}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
-      </section>
-
-      {/* --- NEW: GOOGLE REVIEWS SECTION --- */}
-      <section id="avaliacoes" className="py-32 px-6 max-w-7xl mx-auto">
-        <motion.div {...fadeInUp} className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">O que nossos clientes dizem</h2>
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-yellow-500 text-yellow-500" />)}
-            </div>
-            <span className="font-bold text-xl">5.0</span>
-          </div>
-        </motion.div>
-
-        <motion.div 
-          {...fadeInUp}
-          className="bg-zinc-900/40 rounded-[40px] border border-zinc-800 p-12 md:p-20 shadow-2xl relative overflow-hidden"
-        >
-          {/* Background decoration */}
-          <div className="absolute -top-24 -right-24 w-64 h-64 bg-red-500/5 rounded-full blur-3xl" />
-          
-          <div className="relative z-10 min-h-[200px] flex items-center justify-center">
-            {/* Google Reviews Widget Placeholder */}
-            <div id="google-reviews-widget" className="w-full">
-              {/* Google Reviews Widget */}
-            </div>
-          </div>
-          
-          <p className="text-center text-zinc-500 mt-12 text-sm uppercase tracking-[0.2em]">Avaliações reais via Google Business</p>
-        </motion.div>
       </section>
 
       {/* --- 3. ORÇAMENTO (CTA) SECTION --- */}
@@ -351,6 +317,36 @@ export default function App() {
             <p className="text-center text-xs text-zinc-500 mt-8 uppercase tracking-[0.2em]">Resposta imediata via WhatsApp</p>
           </motion.div>
         </div>
+      </section>
+
+      {/* --- NEW: GOOGLE REVIEWS SECTION --- */}
+      <section id="avaliacoes" className="py-32 px-6 max-w-7xl mx-auto">
+        <motion.div {...fadeInUp} className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">O que nossos clientes dizem</h2>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="flex gap-1">
+              {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-yellow-500 text-yellow-500" />)}
+            </div>
+            <span className="font-bold text-xl">5.0</span>
+          </div>
+        </motion.div>
+
+        <motion.div 
+          {...fadeInUp}
+          className="bg-zinc-900/40 rounded-[40px] border border-zinc-800 p-12 md:p-20 shadow-2xl relative overflow-hidden"
+        >
+          {/* Background decoration */}
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-red-500/5 rounded-full blur-3xl" />
+          
+          <div className="relative z-10 min-h-[200px] flex items-center justify-center">
+            {/* Google Reviews Widget Placeholder */}
+            <div id="google-reviews-widget" className="w-full">
+              {/* Google Reviews Widget */}
+            </div>
+          </div>
+          
+          <p className="text-center text-zinc-500 mt-12 text-sm uppercase tracking-[0.2em]">Avaliações reais via Google Business</p>
+        </motion.div>
       </section>
 
       {/* --- 4. MAPA (LOCATION) SECTION --- */}
