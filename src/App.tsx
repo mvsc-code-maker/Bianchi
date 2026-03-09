@@ -52,9 +52,11 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
-            <p className="font-bold text-xl md:text-2xl text-red-500 tracking-tighter transition-transform group-hover:scale-105">
-              BIANCHI <span className="text-white">INSULFILM</span>
-            </p>
+            <img 
+              src="/logo.webp" 
+              alt="Logo Bianchi Insulfilm" 
+              className="h-8 md:h-10 object-contain transition-transform group-hover:scale-105" 
+            />
           </a>
 
           {/* Desktop Links */}
@@ -238,12 +240,12 @@ export default function App() {
 
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
             {[
-              { label: 'Haval - Visão Externa', tipo: 'imagem', arquivo: '/haval-fora.webp' },
-              { label: 'Haval - Visão Interna', tipo: 'video', arquivo: '/haval-dentro.mp4' },
-              { label: 'BMW Premium - Externa', tipo: 'imagem', arquivo: '/bmw-fora.webp' },
-              { label: 'BMW Premium - Interna', tipo: 'video', arquivo: '/bmw-dentro.mp4' },
-              { label: 'Projeto Residencial - Externa', tipo: 'imagem', arquivo: '/residencial-fora.webp' },
-              { label: 'Projeto Residencial - Interna', tipo: 'imagem', arquivo: '/residencial-dentro.webp' },
+              { label: 'Haval - Visão Externa', tipo: 'imagem', arquivo: '/haval-fora.webp', categoria: 'Película Nano Cerâmica' },
+              { label: 'Haval - Visão Interna', tipo: 'video', arquivo: '/haval-dentro.mp4', categoria: 'Película Nano Cerâmica' },
+              { label: 'BMW Premium - Externa', tipo: 'imagem', arquivo: '/bmw-fora.webp', categoria: 'Alta Performance' },
+              { label: 'BMW Premium - Interna', tipo: 'video', arquivo: '/bmw-dentro.mp4', categoria: 'Alta Performance' },
+              { label: 'Projeto Residencial - Externa', tipo: 'imagem', arquivo: '/residencial-fora.webp', categoria: 'Linha Residencial' },
+              { label: 'Projeto Residencial - Interna', tipo: 'imagem', arquivo: '/residencial-dentro.webp', categoria: 'Linha Residencial' },
             ].map((item, i) => (
               <motion.div 
                 key={i}
@@ -251,7 +253,7 @@ export default function App() {
                 transition={{ delay: i * 0.05 }}
                 className="flex flex-col gap-4"
               >
-                <div className="aspect-[4/3] bg-zinc-800 rounded-3xl overflow-hidden relative group cursor-pointer border border-zinc-800">
+                <div className="aspect-[9/16] bg-zinc-800 rounded-3xl overflow-hidden relative group cursor-pointer border border-zinc-800">
                   {item.tipo === 'imagem' ? (
                     <img 
                       src={item.arquivo} 
@@ -271,6 +273,11 @@ export default function App() {
                     />
                   )}
                   <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500" />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-zinc-900/80 backdrop-blur-sm border border-zinc-700 text-white text-[10px] md:text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                      {item.categoria}
+                    </span>
+                  </div>
                 </div>
                 <p className="text-zinc-400 font-medium text-sm md:text-base text-center uppercase tracking-wider">
                   {item.label}
@@ -367,7 +374,7 @@ export default function App() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Venha nos visitar</h2>
           <div className="w-24 h-1.5 bg-red-500 mx-auto rounded-full mb-8" />
           <p className="text-zinc-400 text-xl max-w-xl mx-auto leading-relaxed">
-            Showroom exclusivo na Vila Matilde. Venha conferir a qualidade de nossas películas pessoalmente.
+            Estamos localizados na Vila Matilde. Venha conferir a qualidade de nossas películas pessoalmente.
           </p>
         </motion.div>
 
@@ -395,7 +402,11 @@ export default function App() {
             
             {/* Coluna 1: Sobre */}
             <div className="col-span-2 lg:col-span-1 flex flex-col gap-2">
-              <p className="font-bold text-lg text-red-500 tracking-tighter">BIANCHI <span className="text-white">INSULFILM</span></p>
+              <img 
+                src="/logo.webp" 
+                alt="Logo Bianchi Insulfilm" 
+                className="h-10 md:h-12 object-contain self-start" 
+              />
               <p className="text-zinc-400 text-xs leading-relaxed max-w-xs">
                 Estética automotiva e residencial de alta performance. Proteção real para você e sua família.
               </p>
@@ -416,7 +427,14 @@ export default function App() {
             {/* Coluna 3: Endereço */}
             <div className="flex items-start gap-2 text-xs text-zinc-400 leading-relaxed">
               <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-              <p>R. Moacir Álvaro, 20<br/>Vila Matilde, SP<br/>03518-000</p>
+              <a 
+                href="https://maps.google.com/?q=Rua+Moacir+Álvaro,+20+-+Vila+Matilde,+São+Paulo" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-red-500 hover:underline underline-offset-4 transition-colors"
+              >
+                R. Moacir Álvaro, 20<br/>Vila Matilde, SP<br/>03518-000
+              </a>
             </div>
 
             {/* Coluna 4: Horários */}
