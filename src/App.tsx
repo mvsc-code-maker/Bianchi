@@ -238,12 +238,12 @@ export default function App() {
 
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
             {[
-              { label: 'Veículo - Visão Externa', imagem: '/imagem1.webp' },
-              { label: 'Veículo - Visão Interna', imagem: '/imagem2.webp' },
-              { label: 'Projeto Premium - Externa', imagem: '/imagem3.webp' },
-              { label: 'Projeto Premium - Interna', imagem: '/imagem4.webp' },
-              { label: 'Projeto Residencial - Externa', imagem: '/imagem5.webp' },
-              { label: 'Projeto Residencial - Interna', imagem: '/imagem6.webp' },
+              { label: 'Haval - Visão Externa', tipo: 'imagem', arquivo: '/haval-fora.webp' },
+              { label: 'Haval - Visão Interna', tipo: 'video', arquivo: '/haval-dentro.mp4' },
+              { label: 'BMW Premium - Externa', tipo: 'imagem', arquivo: '/bmw-fora.webp' },
+              { label: 'BMW Premium - Interna', tipo: 'video', arquivo: '/bmw-dentro.mp4' },
+              { label: 'Projeto Residencial - Externa', tipo: 'imagem', arquivo: '/residencial-fora.webp' },
+              { label: 'Projeto Residencial - Interna', tipo: 'imagem', arquivo: '/residencial-dentro.webp' },
             ].map((item, i) => (
               <motion.div 
                 key={i}
@@ -252,12 +252,24 @@ export default function App() {
                 className="flex flex-col gap-4"
               >
                 <div className="aspect-[4/3] bg-zinc-800 rounded-3xl overflow-hidden relative group cursor-pointer border border-zinc-800">
-                  <img 
-                    src={item.imagem} 
-                    alt={item.label}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
+                  {item.tipo === 'imagem' ? (
+                    <img 
+                      src={item.arquivo} 
+                      alt={item.label}
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <video 
+                      src={item.arquivo} 
+                      title={item.label}
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline
+                    />
+                  )}
                   <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
                 <p className="text-zinc-400 font-medium text-sm md:text-base text-center uppercase tracking-wider">
