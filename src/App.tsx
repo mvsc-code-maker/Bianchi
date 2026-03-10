@@ -244,8 +244,8 @@ export default function App() {
               { label: 'Haval - Visão Interna', tipo: 'video', arquivo: '/haval-dentro.mp4', categoria: 'Película Nano Cerâmica' },
               { label: 'BMW Premium - Externa', tipo: 'imagem', arquivo: '/bmw-fora.webp', categoria: 'Alta Performance' },
               { label: 'BMW Premium - Interna', tipo: 'video', arquivo: '/bmw-dentro.mp4', categoria: 'Alta Performance' },
-              { label: 'Projeto Residencial - Externa', tipo: 'imagem', arquivo: '/residencial-fora.webp', categoria: 'Linha Residencial' },
-              { label: 'Projeto Residencial - Interna', tipo: 'imagem', arquivo: '/residencial-dentro.webp', categoria: 'Linha Residencial' },
+              { label: 'Projeto Residencial - Antes', tipo: 'imagem', arquivo: '/residencial-antes.webp', categoria: 'Linha Residencial' },
+              { label: 'Projeto Residencial - Depois', tipo: 'imagem', arquivo: '/residencial-depois.webp', categoria: 'Linha Residencial' },
             ].map((item, i) => (
               <motion.div 
                 key={i}
